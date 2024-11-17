@@ -6,6 +6,7 @@ import { Navbar } from '@/components/navbar';
 import { MouseCursor } from '@/components/mouse-cursor';
 import { Toaster } from '@/components/ui/sonner';
 import { SearchProvider } from '@/components/search-provider';
+import { Footer } from '@/components/footer';
 
 const orbitron = Orbitron({ subsets: ['latin'] });
 
@@ -21,7 +22,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={orbitron.className}>
+      <body className={`${orbitron.className} flex flex-col min-h-screen`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -31,7 +32,8 @@ export default function RootLayout({
           <SearchProvider>
             <MouseCursor />
             <Navbar />
-            <main>{children}</main>
+            <main className="flex-1">{children}</main>
+            <Footer />
             <Toaster />
           </SearchProvider>
         </ThemeProvider>
